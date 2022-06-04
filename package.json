@@ -1,0 +1,11 @@
+{
+  "name": "ims-subscriber-service",
+  "version": "1.0.0",
+  "description": "mock project to build an IMS subscriber service",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hendson Szeto",
+  "license": "ISC"
+}
