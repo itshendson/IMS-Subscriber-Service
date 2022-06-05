@@ -60,10 +60,10 @@ app.get('/ims/subscriber/:phoneNumber', (req, res) => {
     for (let i = 0; i < subscribers.length; i++) {
         if (phoneNumber === subscribers[i].phoneNumber) {
             console.log('Matched!');
-            return res.status(200).send(subscribers[i]);
+            return res.status(200).json(subscribers[i]);
         }
     }
-    
+
     console.log('No match');
     return res.status(404).json({ message: "Phone number not found." });
 })
@@ -74,8 +74,16 @@ app.put('/ims/subscriber/:phoneNumber', () => {
 
 app.delete('/ims/subscriber/:phoneNumber', (req, res) => {
     // Remove the subscriber identified by the phone number
+    const phoneNumber = req.params.phoneNumber;
+
     if (helpers.isNumberInvalid(phoneNumber)) return res.status(400).json({ message: "Bad request. Only numbers are accepted. No alphabets and symbols." });
-    
+
+    for (let i = 0; i < subscribers.length; i++) {
+        if (phoneNumber === subscribers[i].phoneNumber) {
+            subscribers.splice(i, 1);
+            return res.status(200).send(subscribers);
+        }
+    }
 })
 
 
