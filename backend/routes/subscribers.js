@@ -38,7 +38,17 @@ let subscribers = [
 
 router.get(
   "/:phoneNumber",
-  [check("phoneNumber").notEmpty().isMobilePhone()],
+  [
+    check("phoneNumber")
+      .isMobilePhone()
+      .withMessage(
+        "Phone number can only include numbers. No alphabets or symbols. Example: 16041234567"
+      )
+      .isLength({ min: 11, max: 11 })
+      .withMessage(
+        "Phone numbers must be 11 digits, including Country Code and Area Code. Example: 16041234567"
+      ),
+  ],
   (req, res) => {
     const errors = validationResult(req);
 
@@ -76,7 +86,17 @@ router.put("/:phoneNumber", () => {
 
 router.delete(
   "/:phoneNumber",
-  [check("phoneNumber").notEmpty().isMobilePhone()],
+  [
+    check("phoneNumber")
+      .isMobilePhone()
+      .withMessage(
+        "Phone number can only include numbers. No alphabets or symbols. Example: 16041234567"
+      )
+      .isLength({ min: 11, max: 11 })
+      .withMessage(
+        "Phone numbers must be 11 digits, including Country Code and Area Code. Example: 16041234567"
+      ),
+  ],
   (req, res) => {
     const errors = validationResult(req);
 
