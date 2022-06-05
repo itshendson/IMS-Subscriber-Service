@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMS Subscriber Service</title>
+    <script defer src="/main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-container" class="container">
+        <h1 id="app-title">IMS Home Phone Subscriber Service</h1>
+    </div>
+    <div id="body-container" class="container">
+        
+        <div id="results-container" class="container">
+            <h3>Subscriber Information</h3></br>
+            <div class ="row">
+                <div class="column label">Phone Number:</div>
+                <div class="column" id="phone-number"> </div>
+            </div>
+            <div class ="row">
+                <div class="column label">Username:</div>
+                <div class="column" id="username"/> </div>
+            </div>
+            <div class ="row">
+                <div class="column label">Password:</div>
+                <div class="column" id="password"/> </div>
+            </div>
+            <div class ="row">
+                <div class="column label">Domain:</div>
+                <div class="column" id="domain"/> </div>
+            </div>
+            <div class ="row">
+                <div class="column label">Status</div>
+                <div class="column" id="status"/> </div>
+            </div>
+            <div class ="row">
+                <div class="column label">Features</div>
+                <div class="column" id="features"/> </div>
+            </div>          
+        </div>
+
+        <form id="form-container" class="container">
+            <h4>Search Phone Number</h4>
+            <p class="example">Example A: 18675181010</p>
+            <p class="example">Example B: 1-778-123-4567</p>
+            <input id="input-phone" autocomplete="off" placeholder="Enter Phone Number" maxlength="20"></br>
+            <div id="message-div"></div></br>
+            <button id="search-button" type="submit">Search</button>
+        </form>
+    </div>
+</body>
+</html>
