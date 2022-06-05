@@ -30,6 +30,19 @@ app.use(express.static('public'));
             "destination": "tel:+18675182800"
              }
         }
+    },
+    {
+        "phoneNumber": "1111111",
+        "username": "16045906403",
+        "password": "p@ssw0rd!",
+        "domain": "ims.mnc660.mcc302.3gppnetwork.org",
+        "status": "ACTIVE",
+        "features": {
+            "callForwardNoReply": {
+            "provisioned": true,
+            "destination": "tel:+18675182800"
+             }
+        }
     }
 ]
 
@@ -40,13 +53,15 @@ app.get('/ims/subscriber/:phoneNumber', (req, res) => {
     // Retrieve the subscriber identified by the provided phone number
     const phoneNumber = req.params.phoneNumber;
 
+    if (isNaN(phoneNumber)) return res.status(400).json({ message: "Bad request. Only numbers are accepted. No alphabets and symbols." });
+
     for (let i = 0; i < subscribers.length; i++) {
         if (phoneNumber === subscribers[i].phoneNumber) {
             console.log('Matched!');
-            res.status(200).send(subscribers[i]);
+            return res.status(200).send(subscribers[i]);
         } else {
-            console.log('No match')
-            res.status(404).json({ message: "Phone number not found." })
+            console.log('No match');
+            return res.status(404).json({ message: "Phone number not found." });
         }
     }
 })
