@@ -3,7 +3,7 @@ const helpers = require("../../helpers/helpers");
 const express = require("express");
 const router = express.Router();
 
-/**
+/*
  * -----------DATA STORAGE-------------
  * Assumption: Phone numbers are 11 digits long.
  */
@@ -36,6 +36,7 @@ let subscribers = [
   },
 ];
 
+// Retrieve the subscriber identified by the provided phone number
 router.get(
   "/:phoneNumber",
   [
@@ -70,8 +71,8 @@ router.get(
   }
 );
 
+// Add or update a subscriber identified by the provided phone number
 router.put("/:phoneNumber", () => {
-  // Add or update a subscriber identified by the provided phone number
   const phoneNumber = req.params.phoneNumber;
 
   for (let i = 0; i < subscribers.length; i++) {
@@ -84,6 +85,7 @@ router.put("/:phoneNumber", () => {
   return res.status(200).json({ message: "Subscriber created." });
 });
 
+// Remove the subscriber identified by the phone number.
 router.delete(
   "/:phoneNumber",
   [
