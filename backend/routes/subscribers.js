@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * -----------DATA STORAGE-------------
- * Assumption: Canadian phone numbers with 11 digits
+ * Assumption: Phone numbers are 11 digits long.
  */
 let subscribers = [
   {

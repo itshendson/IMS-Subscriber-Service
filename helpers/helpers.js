@@ -1,5 +1,5 @@
 /*
- * Deprecated. No longer using this validation method. Replaced with the express-validator module.
+ * This validation function is deprecated. Replaced with the express-validator module.
  */
 const isNumberInvalid = (phoneNumber) => {
   if (isNaN(phoneNumber)) return true;
