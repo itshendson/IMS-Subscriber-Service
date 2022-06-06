@@ -5,7 +5,6 @@ const router = express.Router();
 
 /*
  * -----------DATA STORAGE-------------
- * Assumption: Phone numbers are 11 digits long.
  */
 let subscribers = [
   {
@@ -18,19 +17,19 @@ let subscribers = [
       callForwardNoReply: {
         provisioned: true,
         destination: "tel:+18675182800",
+        telemarketing: false,
       },
     },
   },
   {
     phoneNumber: "17781234567",
-    username: "HomerSimpsons",
-    password: "password123",
+    username: "HomerSimpson",
+    password: "chunkylover53",
     domain: "ims.mnc660.mcc302.3gppnetwork.org",
-    status: "ACTIVE",
+    status: "INACTIVE",
     features: {
       callForwardNoReply: {
-        provisioned: true,
-        destination: "tel:+18674567892",
+        provisioned: false,
       },
     },
   },
@@ -43,11 +42,7 @@ router.get(
     check("phoneNumber")
       .isMobilePhone()
       .withMessage(
-        "Phone number can only include numbers. No alphabets or symbols. Example: 16041234567"
-      )
-      .isLength({ min: 11, max: 11 })
-      .withMessage(
-        "Phone numbers must be 11 digits, including Country Code and Area Code. Example: 16041234567"
+        "Only numbers and dashes are accepted. Example: 16041234567"
       ),
   ],
   (req, res) => {
@@ -92,11 +87,7 @@ router.delete(
     check("phoneNumber")
       .isMobilePhone()
       .withMessage(
-        "Phone number can only include numbers. No alphabets or symbols. Example: 16041234567"
-      )
-      .isLength({ min: 11, max: 11 })
-      .withMessage(
-        "Phone numbers must be 11 digits, including Country Code and Area Code. Example: 16041234567"
+        "Only numbers and dashes are accepted. Example: 16041234567"
       ),
   ],
   (req, res) => {
