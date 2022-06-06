@@ -27,13 +27,22 @@ searchButton.addEventListener("click", async () => {
   // GET request to server
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`);
   const responseJSON = await response.json();
-  console.log(responseJSON);
 
-  // Display data to front end
-  phoneNumberDisplay.textContent = responseJSON.phoneNumber;
-  usernameDisplay.textContent = responseJSON.username;
-  passwordDisplay.textContent = responseJSON.password;
-  domainDisplay.textContent = responseJSON.domain;
-  statusDisplay.textContent = responseJSON.status;
-  featureDisplay.textContent = responseJSON.features;
+  // Handle response success/failure
+  if (response.status === 200) {
+    phoneNumberDisplay.textContent = responseJSON.phoneNumber;
+    usernameDisplay.textContent = responseJSON.username;
+    passwordDisplay.textContent = "******"; //responseJSON.password;
+    domainDisplay.textContent = responseJSON.domain;
+    statusDisplay.textContent = responseJSON.status;
+
+    const featuresList = JSON.stringify(responseJSON.features)
+      .replaceAll("{", "")
+      .replaceAll("}", "")
+      .replaceAll('"', "")
+      .replaceAll(",", ", ");
+    featureDisplay.textContent = featuresList;
+  } else {
+    return (message.textContent = "Phone number not found.");
+  }
 });
