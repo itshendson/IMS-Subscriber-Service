@@ -41,7 +41,7 @@ body {
 
 #form-container {
     margin: 20px;
-    min-height: 80px;
+    min-height: 220px;
     min-width: 300px;
     padding: 15px;
 }
@@ -98,5 +98,6 @@ body {
 .column {
     display: flex;
     flex-direction: column;
-    width: 150px;
+    flex-wrap: wrap;
+    width: 115px;
 }
