@@ -5,9 +5,10 @@
 1. Download project from https://github.com/itshendson/IMS-Subscriber-Service.git
 2. Open project
 3. Open node terminal
-4. Execute "npm run start"
-5. Interface with web application here: http://localhost:3000
-6. Or interface with Postman with the endpoints:
+4. Execute "npm install"
+5. Execute "npm run start"
+6. Interface with web application here: http://localhost:5000
+7. Or interface with Postman with the endpoints:
    GET /ims/subscriber/{phoneNumber}
    DELETE /ims/subscriber/{phoneNumber}
 
