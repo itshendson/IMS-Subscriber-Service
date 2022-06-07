@@ -101,7 +101,7 @@ router.delete(
     for (let i = 0; i < subscribers.length; i++) {
       if (phoneNumber === subscribers[i].phoneNumber) {
         subscribers.splice(i, 1);
-        return res.status(200).send(subscribers);
+        return res.status(200).send({ message: "Phone number deleted." });
       }
     }
 
