@@ -13,9 +13,11 @@ searchButton.addEventListener("click", async () => {
 
   // Validate phone number
   if (phoneNumberInput.length < 1) {
+    clearDisplay();
     return (message.textContent = "Phone number is required.");
   } else if (!phoneNumberInput.match(/^(\d+-?)+\d+$/)) {
-    return (message.textContent = "Numbers and dashes only.");
+    clearDisplay();
+    return (message.textContent = "Numbers and single dashes only.");
   } else {
     document.getElementById("input-phone").value = "";
     message.textContent = "";
@@ -46,3 +48,12 @@ searchButton.addEventListener("click", async () => {
     return (message.textContent = "Phone number not found.");
   }
 });
+
+clearDisplay = () => {
+  phoneNumberDisplay.textContent = "";
+  usernameDisplay.textContent = "";
+  passwordDisplay.textContent = "";
+  domainDisplay.textContent = "";
+  statusDisplay.textContent = "";
+  featureDisplay.textContent = "";
+};
