@@ -67,16 +67,7 @@ router.get(
 
 // Add or update a subscriber identified by the provided phone number
 router.put("/:phoneNumber", () => {
-  const phoneNumber = req.params.phoneNumber;
-
-  for (let i = 0; i < subscribers.length; i++) {
-    if (phoneNumber === subscribers[i].phoneNumber) {
-      // Update existing subscriber
-    }
-  }
-
-  // Add new subscriber
-  return res.status(200).json({ message: "Subscriber created." });
+  // Add or update a subscriber identified by the provided phone number
 });
 
 // Remove the subscriber identified by the phone number.
