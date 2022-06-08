@@ -16,7 +16,6 @@ let subscribers = [
       callForwardNoReply: {
         provisioned: true,
         destination: "tel:+18675182800",
-        telemarketing: false,
       },
     },
   },
