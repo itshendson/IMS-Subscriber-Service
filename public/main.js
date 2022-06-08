@@ -15,7 +15,7 @@ searchButton.addEventListener("click", async () => {
   if (phoneNumberInput.length < 1) {
     clearDisplay();
     return (message.textContent = "Phone number is required.");
-  } else if (!phoneNumberInput.match(/^(\d+-?)+\d+$/)) {
+  } else if (!phoneNumberInput.match(/^(\d*-?)+\d+$/)) {
     clearDisplay();
     return (message.textContent = "Numbers and single dashes only.");
   } else {
