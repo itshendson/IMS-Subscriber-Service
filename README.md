@@ -8,8 +8,8 @@
 4. Execute "npm install"
 5. Execute "npm run start"
 6. Interface with web application here: http://localhost:5000
-7. Or interface with Postman with the endpoints:
-   GET /ims/subscriber/{phoneNumber}
-   DELETE /ims/subscriber/{phoneNumber}
+7. Or interface with Postman with the endpoints:  
+   GET /ims/subscriber/{phoneNumber}  
+   DELETE /ims/subscriber/{phoneNumber}  
 
 Note: Two phone numbers already exist as an example: 18675181010 and 17781234567
