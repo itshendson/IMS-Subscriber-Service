@@ -13,7 +13,7 @@ app.use(express.static("public"));
 /**
  * -----------ROUTES-------------
  */
-app.use("/ims/subscriber", require("./backend/routes/subscribers"));
+app.use("/ims/subscriber", require("./backend/routes/subscribersMap"));
 
 /**
  * -----------SERVER-------------
