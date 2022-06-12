@@ -4,6 +4,7 @@ const router = express.Router();
 
 /*
  * -----------DATA STORAGE MAP-------------
+ * Assume phone numbers worldwide
  */
 const subscribers = new Map();
 
@@ -37,7 +38,14 @@ subscribers.set("17781234567", {
 // Retrieve the subscriber identified by the provided phone number
 router.get(
   "/:phoneNumber",
-  [check("phoneNumber").isMobilePhone().withMessage("Bad request.")],
+  [
+    // check("phoneNumber").isMobilePhone().withMessage("Bad request. Phone number must be 6-12 digits. No symbols."),
+    check("phoneNumber")
+      .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
+      .withMessage(
+        "Phone number must follow BC phone number format including country code (1) and area code (604, 250 236, or 778). Example: 1-778-123-4567"
+      ),
+  ],
   (req, res) => {
     const errors = validationResult(req);
 
@@ -58,14 +66,21 @@ router.get(
 );
 
 // Add or update a subscriber identified by the provided phone number
-router.put("/:phoneNumber", () => {
-  // Add or update a subscriber identified by the provided phone number
+router.put("/:phoneNumber", (req, res) => {
+  // Stubbed
 });
 
 // Remove the subscriber identified by the phone number.
 router.delete(
   "/:phoneNumber",
-  [check("phoneNumber").isMobilePhone().withMessage("Bad request.")],
+  [
+    // check("phoneNumber").isMobilePhone().withMessage("Bad request. Phone number must be 6-12 digits. No symbols."),
+    check("phoneNumber")
+      .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
+      .withMessage(
+        "Phone number must follow BC phone number format including country code (1) and area code (604, 250 236, or 778). Example: 1-778-123-4567"
+      ),
+  ],
   (req, res) => {
     const errors = validationResult(req);
 
