@@ -33,7 +33,7 @@ document
     // Sanitize phone number
     phoneNumberInput = phoneNumberInput.replaceAll("-", "");
 
-    // Delegates functions to buttons
+    // Delegate functions to buttons
     switch (target.id) {
       case "search-button":
         searchSubscriber(phoneNumberInput);
