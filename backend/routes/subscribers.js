@@ -39,7 +39,6 @@ subscribers.set("17781234567", {
 router.get(
   "/:phoneNumber",
   [
-    // check("phoneNumber").isMobilePhone().withMessage("Bad request. Phone number must be 6-12 digits. No symbols."),
     check("phoneNumber")
       .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
       .withMessage(
@@ -69,7 +68,6 @@ router.get(
 router.put(
   "/:phoneNumber",
   [
-    // check("phoneNumber").isMobilePhone().withMessage("Bad request. Phone number must be 6-12 digits. No symbols."),
     check("phoneNumber")
       .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
       .withMessage(
@@ -97,7 +95,6 @@ router.put(
 router.delete(
   "/:phoneNumber",
   [
-    // check("phoneNumber").isMobilePhone().withMessage("Bad request. Phone number must be 6-12 digits. No symbols."),
     check("phoneNumber")
       .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
       .withMessage(
