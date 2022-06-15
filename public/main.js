@@ -15,9 +15,6 @@ searchButton.addEventListener("click", async () => {
   if (phoneNumberInput.length < 1) {
     clearDisplay();
     return (message.textContent = "Phone number is required.");
-    // } else if (!phoneNumberInput.match(/^(\d*-?)+\d+$/)) {
-    //   clearDisplay();
-    //   return (message.textContent = "Numbers and single dashes only.");
   } else if (!phoneNumberInput.match(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)) {
     clearDisplay();
     return (message.textContent =
@@ -38,7 +35,7 @@ searchButton.addEventListener("click", async () => {
   if (response.status === 200) {
     phoneNumberDisplay.textContent = responseJSON.phoneNumber;
     usernameDisplay.textContent = responseJSON.username;
-    passwordDisplay.textContent = "******"; //responseJSON.password;
+    passwordDisplay.textContent = "******";
     domainDisplay.textContent = responseJSON.domain;
     statusDisplay.textContent = responseJSON.status;
 
@@ -49,7 +46,7 @@ searchButton.addEventListener("click", async () => {
       .replaceAll(",", ", ");
     featureDisplay.textContent = featuresList;
   } else {
-    return (message.textContent = "Phone number not found.");
+    return (message.textContent = responseJSON.message);
   }
 });
 
