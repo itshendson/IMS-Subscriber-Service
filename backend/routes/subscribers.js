@@ -113,7 +113,7 @@ router.delete(
     if (subscribers.has(phoneNumber)) {
       console.log("Matched!");
       subscribers.delete(phoneNumber);
-      return res.status(200).send({ message: "Phone number deleted." });
+      return res.status(200).send({ message: "Subscriber deleted." });
     }
 
     console.log("No match");
