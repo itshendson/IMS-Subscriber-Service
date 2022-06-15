@@ -9,26 +9,48 @@ const domainDisplay = document.getElementById("domain");
 const statusDisplay = document.getElementById("status");
 const featureDisplay = document.getElementById("features");
 
-searchButton.addEventListener("click", async () => {
-  event.preventDefault();
-  let phoneNumberInput = document.getElementById("input-phone").value;
+// Event delegation for the buttons: "Create/Modify," "Delete," and "Search"
+document
+  .getElementById("button-container")
+  .addEventListener("click", (event) => {
+    event.preventDefault();
+    let target = event.target;
 
-  // Validate phone number
-  if (phoneNumberInput.length < 1) {
-    clearDisplay();
-    return (message.textContent = "Phone number is required.");
-  } else if (!phoneNumberInput.match(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)) {
-    clearDisplay();
-    return (message.textContent =
-      "Input must follows BC phone number format, including country code, area code, followed by 7 digits.");
-  } else {
-    document.getElementById("input-phone").value = "";
-    message.textContent = "";
-  }
+    let phoneNumberInput = document.getElementById("input-phone").value;
 
-  // Sanitize phone number
-  phoneNumberInput = phoneNumberInput.replaceAll("-", "");
+    // Validate phone number
+    if (phoneNumberInput.length < 1) {
+      clearDisplay();
+      return (message.textContent = "Phone number is required.");
+    } else if (
+      !phoneNumberInput.match(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
+    ) {
+      clearDisplay();
+      return (message.textContent =
+        "Input must follows BC phone number format, including country code, area code, followed by 7 digits.");
+    } else {
+      document.getElementById("input-phone").value = "";
+      message.textContent = "";
+    }
 
+    // Sanitize phone number
+    phoneNumberInput = phoneNumberInput.replaceAll("-", "");
+
+    // Delegates functions to buttons
+    switch (target.id) {
+      case "search-button":
+        searchSubscriber(phoneNumberInput);
+        break;
+      case "delete-button":
+        deleteSubscriber(phoneNumberInput);
+        break;
+      case "create-modify-button":
+        console.log("This does nothing yet!");
+        break;
+    }
+  });
+
+const searchSubscriber = async (phoneNumberInput) => {
   // GET request to server
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`);
   const responseJSON = await response.json();
@@ -50,28 +72,9 @@ searchButton.addEventListener("click", async () => {
   } else {
     return (message.textContent = responseJSON.message);
   }
-});
+};
 
-deleteButton.addEventListener("click", async () => {
-  event.preventDefault();
-  let phoneNumberInput = document.getElementById("input-phone").value;
-
-  // Validate phone number
-  if (phoneNumberInput.length < 1) {
-    clearDisplay();
-    return (message.textContent = "Phone number is required.");
-  } else if (!phoneNumberInput.match(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)) {
-    clearDisplay();
-    return (message.textContent =
-      "Input must follows BC phone number format, including country code, area code, followed by 7 digits.");
-  } else {
-    document.getElementById("input-phone").value = "";
-    message.textContent = "";
-  }
-
-  // Sanitize phone number
-  phoneNumberInput = phoneNumberInput.replaceAll("-", "");
-
+const deleteSubscriber = async (phoneNumberInput) => {
   // Delete request to backend
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`, {
     method: "DELETE",
@@ -84,7 +87,7 @@ deleteButton.addEventListener("click", async () => {
   } else {
     return (message.textContent = responseJSON.message);
   }
-});
+};
 
 clearDisplay = () => {
   phoneNumberDisplay.textContent = "";
