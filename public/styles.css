@@ -54,13 +54,13 @@ body {
 
 #message-div {
     color: #ff0000;
-    min-height: 18px;
+    height: 54px;
 }
 
 #button-container {
     position: relative;
     left: 6px;
-    top: 35px;
+    top: 0px;
 }
 
 .app-button {
