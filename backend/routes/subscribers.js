@@ -71,7 +71,7 @@ router.put(
     check("phoneNumber")
       .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
       .withMessage(
-        "Phone number must follow BC phone number format including country code (1) and area code (604, 250 236, or 778). Example: 1-778-123-4567"
+        "Input must follows BC phone number format, including country code, area code, followed by 7 digits."
       ),
   ],
   (req, res) => {
@@ -87,7 +87,7 @@ router.put(
 
     subscribers.set(phoneNumber, subscriber);
 
-    res.status(200).json({ message: "Subscriber added or modified." });
+    res.status(200).json({ message: "Subscriber created or modified." });
   }
 );
 

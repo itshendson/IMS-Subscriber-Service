@@ -18,7 +18,7 @@ searchButton.addEventListener("click", async () => {
   } else if (!phoneNumberInput.match(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)) {
     clearDisplay();
     return (message.textContent =
-      "Phone number must follow BC phone number format including country code (1) and area code (604, 250 236, or 778). Example: 1-778-123-4567");
+      "Input must follows BC phone number format, including country code, area code, followed by 7 digits.");
   } else {
     document.getElementById("input-phone").value = "";
     message.textContent = "";
