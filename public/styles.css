@@ -57,16 +57,24 @@ body {
     min-height: 18px;
 }
 
-#search-button {
-    border-radius: 5px;
-    float: right;
-    margin: 0px 15px;
-    min-height: 25px;
-    min-width: 70px;
+#button-container {
+    position: relative;
+    left: 6px;
+    top: 35px;
 }
 
-#search-button {
+.app-button {
+    border-radius: 5px;
     cursor: pointer;
+    margin: 0px 2px;
+    min-height: 25px;
+    min-width: 70px;
+    padding: 4px;
+}
+
+.app-button:active {
+    background-color: #e7e7e7;
+    transition: scale(0.8);
 }
 
 #input-phone {
