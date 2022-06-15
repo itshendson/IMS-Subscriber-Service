@@ -1,6 +1,3 @@
-const searchButton = document.getElementById("search-button");
-const deleteButton = document.getElementById("delete-button");
-const createModifyButton = document.getElementById("create-modify-button");
 const message = document.getElementById("message-div");
 const phoneNumberDisplay = document.getElementById("phone-number");
 const usernameDisplay = document.getElementById("username");
