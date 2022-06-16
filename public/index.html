@@ -44,7 +44,7 @@
 
         <form id="form-container" class="container">
             <h4>Search Phone Number</h4>
-            <p class="example">Example A: 16041112222</p>
+            <p class="example">Example A: 16042946853</p>
             <p class="example">Example B: 1-778-123-4567</p>
             <input id="input-phone" autocomplete="off" placeholder="Enter Phone Number" maxlength="20"></br>
             <div id="message-div"></div></br>
@@ -54,6 +54,39 @@
                 <button id="search-button" class="app-button type="submit">Search</button>
             </div>
         </form>
+    </div>
+    <div id="modal-overlay">
+        <div id="modal-content">
+            <div id="modal-header">
+                <span id="modal-close">&times;</span>
+                <h2>Create/Modify Subscriber</h2>
+            </div>
+            <div id="modal-body">
+                <div class ="row">
+                    <div id="modal-number" class="column label">Phone Number:</div>
+                    <div id="phone-number" class="column" ></div>
+                </div>
+                <div class ="row">
+                    <div class="column label">Username:</div>
+                    <div class="column" id="phone-number" ><input id="input-username" class="input-field" autocomplete="off" placeholder="Enter username" maxlength="20"></div>
+                </div>
+                <div class ="row">
+                    <div class="column label">Password:</div>
+                    <div class="column" id="username"/><input id="input-password" class="input-field" autocomplete="off" placeholder="Enter password" maxlength="20"></div>
+                </div>
+                <div class ="row">
+                    <div class="column label">Domain:</div>
+                    <div class="column" id="password"/><input id="input-domain" class="input-field" autocomplete="off" placeholder="Enter domain" maxlength="20"></div>
+                </div>
+                <div class ="row">
+                    <div class="column label">Status:</div>
+                    <div class="column" id="domain"/><input id="input-status" class="input-field" autocomplete="off" placeholder="Enter ACTIVE or INACTIVE" maxlength="10"></div>
+                </div>
+                <div class ="row">
+                    <button id="confirm-create-modify-button" class="app-button type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

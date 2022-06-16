@@ -12,7 +12,6 @@ document
   .addEventListener("click", (event) => {
     event.preventDefault();
     let target = event.target;
-
     let phoneNumberInput = document.getElementById("input-phone").value;
 
     // Validate phone number
