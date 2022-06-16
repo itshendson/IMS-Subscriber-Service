@@ -41,16 +41,17 @@ document
         deleteSubscriber(phoneNumberInput);
         break;
       case "create-modify-button":
-        createModifySubscriber(phoneNumberInput);
+        openModal(phoneNumberInput);
         break;
     }
   });
 
+// Event delegation for closing modal
 document.getElementById("modal-overlay").addEventListener("click", (event) => {
   event.preventDefault();
   let target = event.target;
 
-  // Delegate functions for closing modal to buttons
+  // Delegate functions for closing modal
   switch (target.id) {
     case "modal-close":
       closeModal();
@@ -100,8 +101,10 @@ const deleteSubscriber = async (phoneNumberInput) => {
   }
 };
 
-const createModifySubscriber = async (phoneNumberInput) => {
+const openModal = async (phoneNumberInput) => {
   document.getElementById("modal-overlay").style.display = "block";
+  document.getElementById("modal-number-display").textContent =
+    phoneNumberInput;
 };
 
 const closeModal = () => {
