@@ -41,10 +41,25 @@ document
         deleteSubscriber(phoneNumberInput);
         break;
       case "create-modify-button":
-        console.log("This does nothing yet!");
+        createModifySubscriber(phoneNumberInput);
         break;
     }
   });
+
+document.getElementById("modal-overlay").addEventListener("click", (event) => {
+  event.preventDefault();
+  let target = event.target;
+
+  // Delegate functions for closing modal to buttons
+  switch (target.id) {
+    case "modal-close":
+      closeModal();
+      break;
+    case "modal-overlay":
+      closeModal();
+      break;
+  }
+});
 
 const searchSubscriber = async (phoneNumberInput) => {
   // GET request to server
@@ -83,6 +98,14 @@ const deleteSubscriber = async (phoneNumberInput) => {
   } else {
     return (message.textContent = responseJSON.message);
   }
+};
+
+const createModifySubscriber = async (phoneNumberInput) => {
+  document.getElementById("modal-overlay").style.display = "block";
+};
+
+const closeModal = () => {
+  document.getElementById("modal-overlay").style.display = "none";
 };
 
 clearDisplay = () => {
