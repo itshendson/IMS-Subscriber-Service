@@ -4,13 +4,12 @@ const router = express.Router();
 
 /*
  * -----------DATA STORAGE MAP-------------
- * Assume phone numbers worldwide
  */
 const subscribers = new Map();
 
-subscribers.set("16041112222", {
-  phoneNumber: "16041112222",
-  username: "16045906403",
+subscribers.set("16042946853", {
+  phoneNumber: "16042946853",
+  username: "Windrunner",
   password: "p@ssw0rd!",
   domain: "ims.mnc660.mcc302.3gppnetwork.org",
   status: "ACTIVE",
@@ -27,10 +26,10 @@ subscribers.set("17781234567", {
   username: "HomerSimpson",
   password: "chunkylover53",
   domain: "ims.mnc660.mcc302.3gppnetwork.org",
-  status: "INACTIVE",
+  status: "ACTIVE",
   features: {
-    callForwardNoReply: {
-      provisioned: false,
+    satelliteCalling: {
+      provisioned: true,
     },
   },
 });
@@ -74,11 +73,6 @@ router.put(
       .withMessage(
         "Input must follows BC phone number format, including country code, area code, followed by 7 digits."
       ),
-    // body("phoneNumber")
-    //   .matches(/^1-?(250|604|236|778)-?\d{3}-?\d{4}$/)
-    //   .withMessage(
-    //     "Input must follows BC phone number format, including country code, area code, followed by 7 digits."
-    //   ),
     body("username")
       .isLength({ min: 4 })
       .withMessage("Username must be at least 4 characters.")
