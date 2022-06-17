@@ -165,12 +165,12 @@ body {
 
 #modal-number {
     margin-bottom: 10px;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
 #modal-number-display {
     margin-bottom: 10px;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
 .input-field {
@@ -183,3 +183,7 @@ body {
     padding: 5px;    
 }
 
+#message-div {
+    color: #ff0000;
+    height: 54px;
+}
