@@ -109,6 +109,7 @@ const createModifySubscriber = async () => {
     "modal-number-display"
   ).textContent;
 
+  // Create options for request
   options = {
     method: "PUT",
     headers: { "content-type": "application/json" },
@@ -122,10 +123,24 @@ const createModifySubscriber = async () => {
     }),
   };
 
-  const resposne = await fetch(`/ims/subscriber/${phoneNumberInput}`, options);
-  const responseJSON = await resposne.json();
-  console.log(responseJSON);
+  // Reset modal inputs on frontend
+  document.getElementById("input-username").value = "";
+  document.getElementById("input-password").value = "";
+  document.getElementById("input-domain").value = "";
+  document.getElementById("input-status").value = "";
+
+  // Make request and handle response
+  const response = await fetch(`/ims/subscriber/${phoneNumberInput}`, options);
+  const responseJSON = await response.json();
+  if (response.status === 200) {
+    message.textContent = responseJSON.message;
+  } else if (response.status === 400) {
+    message.textContent = responseJSON.errors[0].msg;
+  }
+
+  // Reset frontend
   closeModal();
+  clearDisplay();
 };
 
 const openModal = async (phoneNumberInput) => {
