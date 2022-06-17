@@ -59,6 +59,9 @@ document.getElementById("modal-overlay").addEventListener("click", (event) => {
     case "modal-overlay":
       closeModal();
       break;
+    case "confirm-create-modify-button":
+      createModifySubscriber();
+      break;
   }
 });
 
@@ -99,6 +102,30 @@ const deleteSubscriber = async (phoneNumberInput) => {
   } else {
     return (message.textContent = responseJSON.message);
   }
+};
+
+const createModifySubscriber = async () => {
+  const phoneNumberInput = document.getElementById(
+    "modal-number-display"
+  ).textContent;
+
+  options = {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      phoneNumber: phoneNumberInput,
+      username: document.getElementById("input-username").value,
+      password: document.getElementById("input-password").value,
+      domain: document.getElementById("input-domain").value,
+      status: document.getElementById("input-status").value,
+      features: "none",
+    }),
+  };
+
+  const resposne = await fetch(`/ims/subscriber/${phoneNumberInput}`, options);
+  const responseJSON = await resposne.json();
+  console.log(responseJSON);
+  closeModal();
 };
 
 const openModal = async (phoneNumberInput) => {
