@@ -86,7 +86,7 @@ router.put(
       .escape(),
     body("status")
       .matches(/(ACTIVE|INACTIVE)/)
-      .withMessage("Status is either 'ACTIVE' or 'INACTIVE'."),
+      .withMessage("Status must be either 'ACTIVE' or 'INACTIVE'."),
   ],
   (req, res) => {
     const errors = validationResult(req);
