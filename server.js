@@ -18,7 +18,7 @@ app.use("/ims/subscriber", require("./backend/routes/subscribers"));
 /**
  * -----------SERVER-------------
  */
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(
     `Listening on PORT: ${PORT}. Access app: http://localhost:${PORT}`
   );
