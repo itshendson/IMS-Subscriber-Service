@@ -112,7 +112,7 @@ const createModifySubscriber = async () => {
   ).textContent;
 
   // Create options for request
-  options = {
+  const options = {
     method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
