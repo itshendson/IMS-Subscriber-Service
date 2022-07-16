@@ -30,4 +30,4 @@ const openModal = async (phoneNumberInput) => {
   }
 };
 
-export { closeModal, openModal, test };
+export { closeModal, openModal };
