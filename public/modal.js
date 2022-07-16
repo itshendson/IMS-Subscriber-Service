@@ -30,8 +30,4 @@ const openModal = async (phoneNumberInput) => {
   }
 };
 
-const test = () => {
-  console.log("reached!");
-};
-
 export { closeModal, openModal, test };
