@@ -1,5 +1,6 @@
-const { check, body, validationResult } = require("express-validator");
-const express = require("express");
+import { check, body, validationResult } from "express-validator";
+import express, { Request, Response } from "express";
+
 const router = express.Router();
 
 /*
@@ -44,7 +45,7 @@ router.get(
         "Input must follows BC phone number format, including country code, area code, followed by 7 digits."
       ),
   ],
-  (req, res) => {
+  (req: Request, res: Response): Response => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -88,7 +89,7 @@ router.put(
       .matches(/(ACTIVE|INACTIVE)/)
       .withMessage("Status must be either 'ACTIVE' or 'INACTIVE'."),
   ],
-  (req, res) => {
+  (req: Request, res: Response): Response => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -108,7 +109,7 @@ router.put(
 
     subscribers.set(phoneNumber, subscriber);
 
-    res.status(200).json({ message: "Subscriber created or modified." });
+    return res.status(200).json({ message: "Subscriber created or modified." });
   }
 );
 
@@ -122,7 +123,7 @@ router.delete(
         "Input must follows BC phone number format, including country code, area code, followed by 7 digits."
       ),
   ],
-  (req, res) => {
+  (req: Request, res: Response): Response => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {

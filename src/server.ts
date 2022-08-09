@@ -1,5 +1,5 @@
-const express = require("express");
-const PORT = 5000;
+import express from "express"
+const port = 5000;
 
 const app = express();
 
@@ -18,8 +18,8 @@ app.use("/ims/subscriber", require("./routes/subscribers"));
 /**
  * -----------SERVER-------------
  */
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.port || port, () => {
   console.log(
-    `Listening on PORT: ${PORT}. Access app: http://localhost:${PORT}`
+    `Listening on PORT: ${port}. Access app: http://localhost:${port}`
   );
 });
