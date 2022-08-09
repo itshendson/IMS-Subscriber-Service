@@ -28,3 +28,10 @@
    
    
 - Note: Two phone numbers already exist as an example: 16041112222 and 17781234567
+
+## Tasks
+- Convert to TypeScript
+- Implement Class
+- Change data from being "Subscribers" to something else more interesting
+- Implement MongoDB
+- Make MongoDB reset database once a day (or some other timeframe)
