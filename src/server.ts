@@ -8,7 +8,7 @@ const app = express();
  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("../public"));
 
 /**
  * -----------ROUTES-------------
@@ -18,7 +18,7 @@ app.use("/ims/subscriber", require("./routes/subscribers"));
 /**
  * -----------SERVER-------------
  */
-app.listen(process.env.port || port, () => {
+app.listen(process.env.port || port, (): void => {
   console.log(
     `Listening on PORT: ${port}. Access app: http://localhost:${port}`
   );
