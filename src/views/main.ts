@@ -1,20 +1,20 @@
 import { closeModal, openModal } from "./modal.js";
 
-const message = document.getElementById("message-div");
-const phoneNumberDisplay = document.getElementById("phone-number");
-const usernameDisplay = document.getElementById("username");
-const passwordDisplay = document.getElementById("password");
-const domainDisplay = document.getElementById("domain");
-const statusDisplay = document.getElementById("status");
-const featureDisplay = document.getElementById("features");
+const message = document.getElementById("message-div")!;
+const phoneNumberDisplay = document.getElementById("phone-number")!;
+const usernameDisplay = document.getElementById("username")!;
+const passwordDisplay = document.getElementById("password")!;
+const domainDisplay = document.getElementById("domain")!;
+const statusDisplay = document.getElementById("status")!;
+const featureDisplay = document.getElementById("features")!;
 
 // Event delegation for the buttons: "Create/Modify," "Delete," and "Search"
 document
-  .getElementById("button-container")
+  .getElementById("button-container")!
   .addEventListener("click", (event) => {
     event.preventDefault();
-    let target = event.target;
-    let phoneNumberInput = document.getElementById("input-phone").value;
+    let target = event.target as Element;
+    let phoneNumberInput = (document.getElementById("input-phone") as HTMLInputElement).value;
 
     // Validate phone number
     if (phoneNumberInput.length < 1) {
@@ -27,7 +27,7 @@ document
       return (message.textContent =
         "Input must follows BC phone number format, including country code, area code, followed by 7 digits.");
     } else {
-      document.getElementById("input-phone").value = "";
+      (document.getElementById("input-phone") as HTMLInputElement).value = "";
       message.textContent = "";
     }
 
@@ -37,10 +37,10 @@ document
     // Delegate functions to buttons
     switch (target.id) {
       case "search-button":
-        searchSubscriber(phoneNumberInput);
+        searchSubscriber(parseInt(phoneNumberInput));
         break;
       case "delete-button":
-        deleteSubscriber(phoneNumberInput);
+        deleteSubscriber(parseInt(phoneNumberInput));
         break;
       case "create-modify-button":
         openModal(phoneNumberInput);
@@ -49,9 +49,9 @@ document
   });
 
 // Event delegation for closing modal
-document.getElementById("modal-overlay").addEventListener("click", (event) => {
+document.getElementById("modal-overlay")!.addEventListener("click", (event) => {
   event.preventDefault();
-  let target = event.target;
+  let target = event.target as Element;
 
   // Delegate functions for closing modal
   switch (target.id) {
@@ -67,7 +67,7 @@ document.getElementById("modal-overlay").addEventListener("click", (event) => {
   }
 });
 
-const searchSubscriber = async (phoneNumberInput) => {
+const searchSubscriber = async (phoneNumberInput: number): Promise<void> => {
   // GET request to server
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`);
   const responseJSON = await response.json();
@@ -91,7 +91,7 @@ const searchSubscriber = async (phoneNumberInput) => {
   }
 };
 
-const deleteSubscriber = async (phoneNumberInput) => {
+const deleteSubscriber = async (phoneNumberInput: number): Promise<void> => {
   // Delete request to backend
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`, {
     method: "DELETE",
@@ -106,10 +106,10 @@ const deleteSubscriber = async (phoneNumberInput) => {
   }
 };
 
-const createModifySubscriber = async () => {
+const createModifySubscriber = async (): Promise<void> => {
   const phoneNumberInput = document.getElementById(
     "modal-number-display"
-  ).textContent;
+  )!.textContent;
 
   // Create options for request
   const options = {
@@ -117,19 +117,19 @@ const createModifySubscriber = async () => {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       phoneNumber: phoneNumberInput,
-      username: document.getElementById("input-username").value,
-      password: document.getElementById("input-password").value,
-      domain: document.getElementById("input-domain").value,
-      status: document.getElementById("input-status").value,
+      username: (document.getElementById("input-username") as HTMLInputElement).value,
+      password: (document.getElementById("input-password") as HTMLInputElement).value,
+      domain: (document.getElementById("input-domain") as HTMLInputElement).value,
+      status: (document.getElementById("input-status") as HTMLInputElement).value,
       features: "none",
     }),
   };
 
   // Reset modal inputs on frontend
-  document.getElementById("input-username").value = "";
-  document.getElementById("input-password").value = "";
-  document.getElementById("input-domain").value = "";
-  document.getElementById("input-status").value = "";
+  (document.getElementById("input-username") as HTMLInputElement).value = "";
+  (document.getElementById("input-password") as HTMLInputElement).value = "";
+  (document.getElementById("input-domain") as HTMLInputElement).value = "";
+  (document.getElementById("input-status") as HTMLInputElement).value = "";
 
   // Make request and handle response
   const response = await fetch(`/ims/subscriber/${phoneNumberInput}`, options);
@@ -145,7 +145,7 @@ const createModifySubscriber = async () => {
   clearDisplay();
 };
 
-const clearDisplay = () => {
+const clearDisplay = (): void => {
   phoneNumberDisplay.textContent = "";
   usernameDisplay.textContent = "";
   passwordDisplay.textContent = "";
